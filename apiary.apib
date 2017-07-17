@@ -1,0 +1,98 @@
+FORMAT: 1A
+HOST: http://clickplan.apiblueprint.org/
+
+# ClickPlan
+
+This API is used to sell any digital products using a link.
+
+## Products Collection [/products]
+
+### List All Products [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Build a Successful SaaS business",
+                "price": "45",
+                "thanks_page": "https://www.rubyplus.com/thanks.html",
+                "cancel_page": "https://www.rubyplus.com/cancel.html",
+                "sales_page": "https://www.rubyplus.com/saas-book.html",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "landing_pages": [
+                    {
+                        "name": "Swift Blog",
+                        "link": "http://www.swblog.com"
+                    }, {
+                        "name": "Python Blog",
+                        "link": "http://pythonistas.com"
+                    }, {
+                        "name": "Objective-C Tutorials",
+                        "link": "https://objec.com/tuts.html"
+                    }, {
+                        "name": "Ruby Blog",
+                        "link": "https://rubyplus.net"
+                    }
+                ]
+            }
+        ]
+
+### Create a New Product [POST]
+
+You can create a new digital product to sell using this action. It takes a JSON
+object containing a product and a collection of landing pages as an array.
+
++ Request (application/json)
+
+        {
+            "name": "Build a Successful SaaS Business",
+            "price": "45.95",
+            "thanks_page": "https://www.rubyplus.com/thanks.html",
+            "cancel_page": "https://www.rubyplus.com/cancel.html",
+            "sales_page": "https://www.rubyplus.com/saas-book.html",
+                "landing_pages": [
+                    {
+                        "name": "Swift Blog",
+                        "link": "http://www.swblog.com"
+                    }, {
+                        "name": "Python Blog",
+                        "link": "http://pythonistas.com"
+                    }, {
+                        "name": "Objective-C Tutorials",
+                        "link": "https://objec.com/tuts.html"
+                    }, {
+                        "name": "Ruby Blog",
+                        "link": "https://rubyplus.net"
+                    }
+                ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /products/2
+
+    + Body
+            
+            {
+                "name": "Build a Successful SaaS Business",
+                    "landing_pages": [
+                        {
+                            "name": "Swift Blog",
+                            "link": "http://www.swblog.com"
+                        }, 
+                        {
+                            "name": "Python Blog",
+                            "link": "http://pythonistas.com"
+                        }, 
+                        {
+                            "name": "Objective-C Tutorials",
+                            "link": "https://objec.com/tuts.html"
+                        }, 
+                        {
+                            "name": "Ruby Blog",
+                            "link": "https://rubyplus.net"
+                        }
+                    ]
+            }
